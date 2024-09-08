@@ -8,11 +8,16 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
+ 
+
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
+        tabBarStyle: {
+          backgroundColor: '#ffffff',
+        },
       }}>
       <Tabs.Screen
         name="index"
@@ -23,6 +28,16 @@ export default function TabLayout() {
           ),
         }}
       />
+       <Tabs.Screen
+        name="favorite"
+        options={{
+          title: 'Favorite',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'heart-sharp' : 'heart-outline'} color={color} />
+          ),
+        }}
+      />
+    
       <Tabs.Screen
         name="explore"
         options={{
